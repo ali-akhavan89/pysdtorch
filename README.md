@@ -21,9 +21,9 @@ This project is in active development.
   `NotImplementedError`.
 - Vensim support covers a useful subset of equations and functions, but not the
   full Vensim language.
-- The included `Examples/LV.mdl` can be translated, but it contains
-  `RANDOM PINK NOISE`, which is not currently implemented in the runtime
-  translator.
+- Pink-noise translation is not currently available. Models should explicitly
+  build the stock-and-flow structure needed to replicate process noise instead
+  of relying on Vensim's `RANDOM PINK NOISE` function.
 
 ## Repository Layout
 
@@ -40,6 +40,9 @@ pysdtorch/
   benchmarks/              Translation and runtime benchmark entry points
 Examples/
   LV.mdl                   Example Vensim model
+  Synth_Data_Gen.voc       Parameter bounds used by the example
+  example.py               End-to-end load, sample, simulate, and time script
+  example_plot.py          Generate and plot 50 simulated MN1/MN2 time series
 ```
 
 ## Requirements
@@ -66,6 +69,18 @@ Translate a Vensim model to the internal representation:
 
 ```bash
 python -m pysdtorch.benchmarks.translate path/to/model.mdl --no-python-compile
+```
+
+Run the included example:
+
+```bash
+python Examples/example.py
+```
+
+Generate a PDF plot from 50 random parameter draws:
+
+```bash
+python Examples/example_plot.py
 ```
 
 Load and simulate a supported Vensim model:
