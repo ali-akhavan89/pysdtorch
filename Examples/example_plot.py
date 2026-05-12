@@ -27,7 +27,7 @@ from pysdtorch.voc import parse_voc_bounds
 
 N_DRAWS = 50
 TRACKED_VARIABLES = ["MN1", "MN2"]
-OUTPUT_PDF = "lv_mn_timeseries.pdf"
+OUTPUT_PDF = "plot.pdf"
 
 
 def get_script_path(filename: str) -> Path:
